@@ -1,0 +1,8 @@
+{
+  "extends": "../conf/eslint.conf.json",
+  "env": {
+    "browser": false,
+    "jasmine": false,
+    "node": true
+  },
+}
