@@ -1,13 +1,14 @@
 const _ = require('lodash');
-var fountain = require('fountain-generator');
+const fountain = require('fountain-generator');
+const conf = require('./conf');
 
 module.exports = fountain.Base.extend({
-  prompting: function () {
+  prompting() {
     this.fountainPrompting();
   },
 
   configuring: {
-    package: function () {
+    pkg() {
       var pkg = { devDependencies: { eslint: '^1.10.3' } };
 
       if (this.props.modules === 'webpack') {
@@ -19,46 +20,11 @@ module.exports = fountain.Base.extend({
       this.mergeJson('package.json', pkg);
     },
 
-    eslint: function () {
-      const eslint = {
-        extends: 'eslint:recommended',
-        env: { es6: true, browser: true, jasmine: true },
-        ecmaFeatures: { modules: true },
-        globals: { module: true, inject: true }
-      };
-
-      if (this.props.framework === 'react') {
-        _.merge(eslint, {
-          plugins: ['react'],
-          ecmaFeatures: { jsx: true },
-          rules: { 'react/jsx-uses-react': 1 }
-        });
-      }
-
-      if (this.props.modules === 'inject') {
-        if (this.props.framework === 'react') {
-          _.merge(eslint, {
-            globals: { React: true, ReactDOM: true }
-          });
-        }
-
-        if (this.props.framework === 'angular1') {
-          _.merge(eslint, {
-            globals: { angular: true }
-          });
-        }
-
-        if (this.props.framework === 'angular2') {
-          _.merge(eslint, {
-            globals: { ng: true }
-          });
-        }
-      }
-
-      this.fs.writeJSON(this.destinationPath('conf/eslint.conf.json'), eslint);
+    eslint() {
+      this.fs.writeJSON(this.destinationPath('conf/eslint.conf.json'), conf(this.props));
     },
 
-    rc: function () {
+    rc() {
       ['conf', 'gulp_tasks', 'src'].forEach(path => {
         this.fs.copyTpl(
           this.templatePath(`${path}/.eslintrc`),
@@ -69,7 +35,7 @@ module.exports = fountain.Base.extend({
   },
 
   writing: {
-    wireing: function () {
+    wireing() {
       if (this.props.modules === 'webpack') {
         this.replaceInFile(
           'conf/webpack.conf.js',
