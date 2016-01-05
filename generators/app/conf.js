@@ -14,7 +14,7 @@ module.exports = function eslintConf(props) {
 
   if (props.framework === 'react') {
     conf.plugins = ['react'];
-    conf.ecmaFeatures = { jsx: true };
+    conf.ecmaFeatures.jsx = true;
     conf.rules = { 'react/jsx-uses-react': 1 };
   }
 

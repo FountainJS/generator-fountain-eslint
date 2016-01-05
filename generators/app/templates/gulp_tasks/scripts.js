@@ -10,7 +10,7 @@ gulp.task('scripts', scripts);
 
 function scripts() {
 <% } -%>
-  return gulp.src(path.join(conf.paths.src, '/**/*.js'))
+  return gulp.src(conf.path.src('**/*.js'))
     .pipe(eslint())
     .pipe(eslint.format())<% if (full) { %>;<% } %>
 <% if (full) { -%>

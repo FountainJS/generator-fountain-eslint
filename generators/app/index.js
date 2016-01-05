@@ -36,9 +36,15 @@ module.exports = fountain.Base.extend({
 
   writing: {
     wireing() {
-      if (this.props.modules === 'webpack') {
+      if (this.props.modules === 'webpack' && this.props.js !== 'typescript') {
         this.replaceInFile(
           'conf/webpack.conf.js',
+          'conf/webpack.conf.js',
+          / {2}module: \{/
+        );
+        this.replaceInFile(
+          'conf/webpack.conf.js',
+          'conf/webpack-test.conf.js',
           / {2}module: \{/
         );
       } else if (this.props.modules === 'systemjs') {
@@ -49,6 +55,7 @@ module.exports = fountain.Base.extend({
         );
       } else if (this.props.modules === 'inject') {
         this.replaceInFile(
+          'gulp_tasks/scripts.js',
           'gulp_tasks/scripts.js',
           / {2}return gulp\.src[^\n]*/,
           { full: false }
