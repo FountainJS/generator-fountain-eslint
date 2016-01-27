@@ -8,12 +8,12 @@ module.exports = fountain.Base.extend({
 
   configuring: {
     pkg() {
-      var pkg = { devDependencies: { eslint: '^1.10.3' } };
+      const pkg = {devDependencies: {eslint: '^1.10.3'}};
 
       if (this.props.modules === 'webpack') {
-        _.merge(pkg, { devDependencies: { 'eslint-loader': '^1.1.1' } });
+        _.merge(pkg, {devDependencies: {'eslint-loader': '^1.1.1'}});
       } else {
-        _.merge(pkg, { devDependencies: { 'gulp-eslint': '^1.0.0' } });
+        _.merge(pkg, {devDependencies: {'gulp-eslint': '^1.0.0'}});
       }
 
       this.mergeJson('package.json', pkg);
