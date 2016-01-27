@@ -1,6 +1,5 @@
 const _ = require('lodash');
 const fountain = require('fountain-generator');
-const conf = require('./conf');
 
 module.exports = fountain.Base.extend({
   prompting() {
@@ -18,19 +17,6 @@ module.exports = fountain.Base.extend({
       }
 
       this.mergeJson('package.json', pkg);
-    },
-
-    eslint() {
-      this.fs.writeJSON(this.destinationPath('conf/eslint.conf.json'), conf(this.props));
-    },
-
-    rc() {
-      ['conf', 'gulp_tasks', 'src'].forEach(path => {
-        this.fs.copyTpl(
-          this.templatePath(`${path}/.eslintrc`),
-          this.destinationPath(`${path}/.eslintrc`)
-        );
-      });
     }
   },
 
