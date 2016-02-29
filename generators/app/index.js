@@ -8,12 +8,46 @@ module.exports = fountain.Base.extend({
 
   configuring: {
     pkg() {
-      const pkg = {devDependencies: {eslint: '^1.10.3'}};
+      const pkg = {
+        devDependencies: {
+          'eslint': '^2.2.0',
+          'eslint-config-xo-space': '^0.10.0'
+        },
+        eslintConfig: {
+          env: {
+            browser: true
+          }
+        }
+      };
 
       if (this.props.modules === 'webpack') {
-        _.merge(pkg, {devDependencies: {'eslint-loader': '^1.1.1'}});
+        _.merge(pkg, {devDependencies: {'eslint-loader': '^1.3.0'}});
       } else {
-        _.merge(pkg, {devDependencies: {'gulp-eslint': '^1.0.0'}});
+        _.merge(pkg, {devDependencies: {'gulp-eslint': '^2.0.0'}});
+      }
+
+      if (this.props.js === 'babel') {
+        _.merge(pkg, {
+          devDependencies: {
+            'babel-eslint': '^5.0.0',
+            'eslint-plugin-babel': '^3.1.0'
+          },
+          eslintConfig: {
+            extends: [
+              'xo-space/esnext'
+            ]
+          }
+        });
+      }
+
+      if (this.props.js === 'js') {
+        _.merge(pkg, {
+          eslintConfig: {
+            extends: [
+              'xo-space'
+            ]
+          }
+        });
       }
 
       this.mergeJson('package.json', pkg);
