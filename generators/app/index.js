@@ -54,7 +54,7 @@ module.exports = fountain.Base.extend({
         _.merge(pkg, {
           eslintConfig: {
             rules: {
-              'new-cap': [2, {capIsNewExceptions: ['Input', 'Component', 'View', 'Injectable', 'RouteConfig']}]
+              'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'View', 'Injectable', 'RouteConfig']}]
             }
           }
         });
