@@ -50,6 +50,16 @@ module.exports = fountain.Base.extend({
         });
       }
 
+      if (this.props.framework === 'angular2' && this.props.js === 'babel') {
+        _.merge(pkg, {
+          eslintConfig: {
+            rules: {
+              'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'View', 'Injectable', 'RouteConfig']}]
+            }
+          }
+        });
+      }
+
       this.mergeJson('package.json', pkg);
     }
   },
