@@ -60,6 +60,16 @@ module.exports = fountain.Base.extend({
         });
       }
 
+      if (this.props.framework === 'angular1' && this.props.modules === 'inject') {
+        _.merge(pkg, {
+          eslintConfig: {
+            globals: {
+              angular: true
+            }
+          }
+        });
+      }
+
       this.mergeJson('package.json', pkg);
     }
   },
