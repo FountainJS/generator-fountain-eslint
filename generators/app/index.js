@@ -50,7 +50,7 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.framework === 'angular2' && this.props.js === 'babel') {
+      if (this.props.framework === 'angular2' && this.props.js !== 'typescript') {
         _.merge(pkg, {
           eslintConfig: {
             rules: {
