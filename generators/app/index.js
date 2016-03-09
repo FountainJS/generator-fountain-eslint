@@ -10,7 +10,8 @@ module.exports = fountain.Base.extend({
     pkg() {
       const pkg = {
         devDependencies: {
-          'eslint': '^2.2.0',
+          // https://github.com/babel/babel-eslint/issues/267
+          'eslint': '2.2.x',
           'eslint-config-xo-space': '^0.10.0'
         },
         eslintConfig: {
@@ -50,11 +51,11 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.framework === 'angular2' && this.props.js === 'babel') {
+      if (this.props.framework === 'angular2' && this.props.js !== 'typescript') {
         _.merge(pkg, {
           eslintConfig: {
             rules: {
-              'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'View', 'Injectable', 'RouteConfig']}]
+              'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'View', 'Injectable', 'RouteConfig', 'Class']}]
             }
           }
         });
