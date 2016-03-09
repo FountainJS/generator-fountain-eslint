@@ -22,7 +22,15 @@ module.exports = fountain.Base.extend({
       };
 
       if (this.props.modules === 'webpack') {
-        _.merge(pkg, {devDependencies: {'eslint-loader': '^1.3.0'}});
+        _.merge(pkg, {
+          devDependencies: {
+            'eslint-loader': '^1.3.0',
+            'babel-loader': '^6.2.0'
+          }
+        });
+        if (this.props.framework === 'react') {
+          _.merge(pkg, {devDependencies: {'babel-preset-react': '^6.1.18'}});
+        }
       } else {
         _.merge(pkg, {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
