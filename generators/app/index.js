@@ -69,14 +69,21 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.framework === 'angular1' && this.props.modules === 'inject') {
-        _.merge(pkg, {
-          eslintConfig: {
-            globals: {
-              angular: true
+      if (this.props.modules === 'inject') {
+        if (this.props.framework === 'angular1') {
+          _.merge(pkg, {
+            eslintConfig: {
+              globals: {
+                angular: true
+              }
             }
-          }
-        });
+          });
+        }
+        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+          _.merge(pkg, {devDependencies: {'gulp-babel': '^6.1.0'}});
+        }
+      }
+
       if (this.props.modules === 'systemjs') {
         if (this.props.framework === 'angular2') {
           _.merge(pkg, {
