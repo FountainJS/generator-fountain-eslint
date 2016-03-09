@@ -103,7 +103,7 @@ module.exports = fountain.Base.extend({
         if (this.props.js !== 'typescript') {
           _.merge(pkg, {
             jspm: {
-              dependencies: {'babel': 'npm:babel-core@^6.6.5'},
+              dependencies: {babel: 'npm:babel-core@^6.6.5'},
               devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
             }
           });
