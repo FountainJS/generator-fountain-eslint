@@ -22,7 +22,15 @@ module.exports = fountain.Base.extend({
       };
 
       if (this.props.modules === 'webpack') {
-        _.merge(pkg, {devDependencies: {'eslint-loader': '^1.3.0'}});
+        _.merge(pkg, {
+          devDependencies: {
+            'eslint-loader': '^1.3.0',
+            'babel-loader': '^6.2.0'
+          }
+        });
+        if (this.props.framework === 'react') {
+          _.merge(pkg, {devDependencies: {'babel-preset-react': '^6.1.18'}});
+        }
       } else {
         _.merge(pkg, {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
@@ -61,14 +69,53 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.framework === 'angular1' && this.props.modules === 'inject') {
-        _.merge(pkg, {
-          eslintConfig: {
-            globals: {
-              angular: true
+      if (this.props.modules === 'inject') {
+        if (this.props.framework === 'angular1') {
+          _.merge(pkg, {
+            eslintConfig: {
+              globals: {
+                angular: true
+              }
             }
-          }
-        });
+          });
+        }
+        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+          _.merge(pkg, {devDependencies: {'gulp-babel': '^6.1.0'}});
+        }
+      }
+
+      if (this.props.modules === 'systemjs') {
+        if (this.props.framework === 'angular2') {
+          _.merge(pkg, {
+            jspm: {
+              devDependencies: {
+                'babel-plugin-angular2-annotations': 'npm:babel-plugin-angular2-annotations@^5.0.0',
+                'babel-plugin-transform-decorators-legacy': 'npm:babel-plugin-transform-decorators-legacy@^1.3.4',
+                'babel-plugin-transform-class-properties': 'npm:babel-plugin-transform-class-properties@^6.6.0',
+                'babel-plugin-transform-flow-strip-types': 'npm:babel-plugin-transform-flow-strip-types@^6.6.4'
+              }
+            }
+          });
+        } else if (this.props.framework === 'react') {
+          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@6.5.0'}}});
+        }
+
+        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+          _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
+        }
+
+        if (this.props.js === 'babel') {
+          _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
+        }
+
+        if (this.props.js !== 'typescript') {
+          _.merge(pkg, {
+            jspm: {
+              dependencies: {babel: 'npm:babel-core@^6.6.5'},
+              devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
+            }
+          });
+        }
       }
 
       this.mergeJson('package.json', pkg);
