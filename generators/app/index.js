@@ -99,7 +99,7 @@ module.exports = fountain.Base.extend({
             }
           });
         } else if (this.props.framework === 'react') {
-          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@6.5.0'}}});
+          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
         }
 
         if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
