@@ -85,6 +85,8 @@ module.exports = fountain.Base.extend({
       }
 
       if (this.props.modules === 'systemjs') {
+        _.merge(pkg, {eslintConfig: {globals: {SystemJS: true}}});
+
         if (this.props.framework === 'angular2') {
           _.merge(pkg, {
             jspm: {
