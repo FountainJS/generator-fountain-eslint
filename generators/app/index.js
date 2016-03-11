@@ -102,23 +102,23 @@ module.exports = fountain.Base.extend({
         } else if (this.props.framework === 'react') {
           _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
         }
+      }
 
-        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
-          _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
-        }
+      if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+        _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
+      }
 
-        if (this.props.js === 'babel') {
-          _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
-        }
+      if (this.props.js === 'babel') {
+        _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
+      }
 
-        if (this.props.js !== 'typescript') {
-          _.merge(pkg, {
-            jspm: {
-              dependencies: {babel: 'npm:babel-core@^6.6.5'},
-              devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
-            }
-          });
-        }
+      if (this.props.js !== 'typescript') {
+        _.merge(pkg, {
+          jspm: {
+            dependencies: {babel: 'npm:babel-core@^6.6.5'},
+            devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
+          }
+        });
       }
 
       this.mergeJson('package.json', pkg);
