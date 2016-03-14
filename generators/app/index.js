@@ -16,7 +16,8 @@ module.exports = fountain.Base.extend({
         },
         eslintConfig: {
           env: {
-            browser: true
+            browser: true,
+            jasmine: true
           }
         }
       };
@@ -85,6 +86,8 @@ module.exports = fountain.Base.extend({
       }
 
       if (this.props.modules === 'systemjs') {
+        _.merge(pkg, {eslintConfig: {globals: {SystemJS: true}}});
+
         if (this.props.framework === 'angular2') {
           _.merge(pkg, {
             jspm: {
@@ -97,15 +100,7 @@ module.exports = fountain.Base.extend({
             }
           });
         } else if (this.props.framework === 'react') {
-          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@6.5.0'}}});
-        }
-
-        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
-          _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
-        }
-
-        if (this.props.js === 'babel') {
-          _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
+          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
         }
 
         if (this.props.js !== 'typescript') {
@@ -116,6 +111,14 @@ module.exports = fountain.Base.extend({
             }
           });
         }
+      }
+
+      if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+        _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
+      }
+
+      if (this.props.js === 'babel') {
+        _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
       }
 
       this.mergeJson('package.json', pkg);
