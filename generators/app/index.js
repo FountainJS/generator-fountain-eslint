@@ -10,8 +10,7 @@ module.exports = fountain.Base.extend({
     pkg() {
       const pkg = {
         devDependencies: {
-          // https://github.com/babel/babel-eslint/issues/267
-          'eslint': '2.2.x',
+          'eslint': '^2.4.x',
           'eslint-config-xo-space': '^0.10.0'
         },
         eslintConfig: {
@@ -39,7 +38,7 @@ module.exports = fountain.Base.extend({
       if (this.props.js === 'babel') {
         _.merge(pkg, {
           devDependencies: {
-            'babel-eslint': '^5.0.0',
+            'babel-eslint': '^6.0.0-beta.6',
             'eslint-plugin-babel': '^3.1.0'
           },
           eslintConfig: {
