@@ -10,7 +10,7 @@ module.exports = fountain.Base.extend({
     pkg() {
       const pkg = {
         devDependencies: {
-          'eslint': '^2.4.x',
+          'eslint': '^2.4.0',
           'eslint-config-xo-space': '^0.10.0'
         },
         eslintConfig: {
