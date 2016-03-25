@@ -46,8 +46,16 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
 
-      if (this.props.js === 'babel') {
-        _.merge(pkg, {
+      if (this.props.js === 'js') {
+        this.mergeJson('package.json', {
+          eslintConfig: {
+            extends: [
+              'xo-space'
+            ]
+          }
+        });
+      } else {
+        this.mergeJson('package.json', {
           devDependencies: {
             'babel-eslint': '^6.0.0-beta.6',
             'eslint-plugin-babel': '^3.1.0'
@@ -55,16 +63,6 @@ module.exports = fountain.Base.extend({
           eslintConfig: {
             extends: [
               'xo-space/esnext'
-            ]
-          }
-        });
-      }
-
-      if (this.props.js === 'js') {
-        _.merge(pkg, {
-          eslintConfig: {
-            extends: [
-              'xo-space'
             ]
           }
         });
