@@ -18,7 +18,22 @@ module.exports = fountain.Base.extend({
             jasmine: true
           }
         }
-      };
+      });
+
+      if (this.props.framework === 'react') {
+        this.mergeJson('package.json', {
+          devDependencies: {
+            'babel-preset-react': '^6.1.18',
+            'eslint-config-xo-react': '^0.3.0',
+            'eslint-plugin-react': '^3.10.0'
+          },
+          eslintConfig: {
+            extends: [
+              'xo-react'
+            ]
+          }
+        });
+      }
 
       if (this.props.modules === 'webpack') {
         this.mergeJson('package.json', {
@@ -27,9 +42,6 @@ module.exports = fountain.Base.extend({
             'babel-loader': '^6.2.0'
           }
         });
-        if (this.props.framework === 'react') {
-          _.merge(pkg, {devDependencies: {'babel-preset-react': '^6.1.18'}});
-        }
       } else {
         this.mergeJson('package.json', {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
