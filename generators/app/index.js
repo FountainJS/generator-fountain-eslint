@@ -13,6 +13,7 @@ module.exports = fountain.Base.extend({
           'eslint-config-xo-space': '^0.10.0'
         },
         eslintConfig: {
+          root: true,
           env: {
             browser: true,
             jasmine: true
