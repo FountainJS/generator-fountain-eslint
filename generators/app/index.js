@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const fountain = require('fountain-generator');
 
 module.exports = fountain.Base.extend({
@@ -8,35 +7,56 @@ module.exports = fountain.Base.extend({
 
   configuring: {
     pkg() {
-      const pkg = {
+      this.mergeJson('package.json', {
         devDependencies: {
           'eslint': '^2.4.0',
           'eslint-config-xo-space': '^0.10.0'
         },
         eslintConfig: {
+          root: true,
           env: {
             browser: true,
             jasmine: true
           }
         }
-      };
+      });
+
+      if (this.props.framework === 'react') {
+        this.mergeJson('package.json', {
+          devDependencies: {
+            'babel-preset-react': '^6.1.18',
+            'eslint-config-xo-react': '^0.3.0',
+            'eslint-plugin-react': '^3.10.0'
+          },
+          eslintConfig: {
+            extends: [
+              'xo-react'
+            ]
+          }
+        });
+      }
 
       if (this.props.modules === 'webpack') {
-        _.merge(pkg, {
+        this.mergeJson('package.json', {
           devDependencies: {
             'eslint-loader': '^1.3.0',
             'babel-loader': '^6.2.0'
           }
         });
-        if (this.props.framework === 'react') {
-          _.merge(pkg, {devDependencies: {'babel-preset-react': '^6.1.18'}});
-        }
       } else {
-        _.merge(pkg, {devDependencies: {'gulp-eslint': '^2.0.0'}});
+        this.mergeJson('package.json', {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
 
-      if (this.props.js === 'babel') {
-        _.merge(pkg, {
+      if (this.props.js === 'js') {
+        this.mergeJson('package.json', {
+          eslintConfig: {
+            extends: [
+              'xo-space'
+            ]
+          }
+        });
+      } else {
+        this.mergeJson('package.json', {
           devDependencies: {
             'babel-eslint': '^6.0.0-beta.6',
             'eslint-plugin-babel': '^3.1.0'
@@ -49,18 +69,8 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.js === 'js') {
-        _.merge(pkg, {
-          eslintConfig: {
-            extends: [
-              'xo-space'
-            ]
-          }
-        });
-      }
-
       if (this.props.framework === 'angular2' && this.props.js !== 'typescript') {
-        _.merge(pkg, {
+        this.mergeJson('package.json', {
           eslintConfig: {
             rules: {
               'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'View', 'Injectable', 'RouteConfig', 'Class']}]
@@ -71,7 +81,7 @@ module.exports = fountain.Base.extend({
 
       if (this.props.modules === 'inject') {
         if (this.props.framework === 'angular1') {
-          _.merge(pkg, {
+          this.mergeJson('package.json', {
             eslintConfig: {
               globals: {
                 angular: true
@@ -80,15 +90,15 @@ module.exports = fountain.Base.extend({
           });
         }
         if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
-          _.merge(pkg, {devDependencies: {'gulp-babel': '^6.1.0'}});
+          this.mergeJson('package.json', {devDependencies: {'gulp-babel': '^6.1.0'}});
         }
       }
 
       if (this.props.modules === 'systemjs') {
-        _.merge(pkg, {eslintConfig: {globals: {SystemJS: true}}});
+        this.mergeJson('package.json', {eslintConfig: {globals: {SystemJS: true}}});
 
         if (this.props.framework === 'angular2') {
-          _.merge(pkg, {
+          this.mergeJson('package.json', {
             jspm: {
               devDependencies: {
                 'babel-plugin-angular2-annotations': 'npm:babel-plugin-angular2-annotations@^5.0.0',
@@ -99,11 +109,11 @@ module.exports = fountain.Base.extend({
             }
           });
         } else if (this.props.framework === 'react') {
-          _.merge(pkg, {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
+          this.mergeJson('package.json', {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
         }
 
         if (this.props.js !== 'typescript') {
-          _.merge(pkg, {
+          this.mergeJson('package.json', {
             jspm: {
               dependencies: {babel: 'npm:babel-core@^6.6.5'},
               devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
@@ -113,14 +123,12 @@ module.exports = fountain.Base.extend({
       }
 
       if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
-        _.merge(pkg, {devDependencies: {'babel-core': '^6.2.0'}});
+        this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.2.0'}});
       }
 
       if (this.props.js === 'babel') {
-        _.merge(pkg, {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
+        this.mergeJson('package.json', {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
       }
-
-      this.mergeJson('package.json', pkg);
     }
   },
 
