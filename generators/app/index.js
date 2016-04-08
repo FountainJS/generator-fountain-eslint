@@ -137,12 +137,12 @@ module.exports = fountain.Base.extend({
       if (this.props.modules === 'webpack' && this.props.js !== 'typescript') {
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
-          'conf/webpack.conf.js',
+          'conf/webpack-test.conf.js',
           / {2}module: \{/
         );
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
-          'conf/webpack-test.conf.js',
+          'conf/webpack-dist.conf.js',
           / {2}module: \{/
         );
       } else if (this.props.modules === 'systemjs') {
