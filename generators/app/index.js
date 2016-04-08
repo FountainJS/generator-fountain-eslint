@@ -34,6 +34,21 @@ module.exports = fountain.Base.extend({
             ]
           }
         });
+        if (this.props.modules === 'inject') {
+          this.mergeJson('package.json', {
+            eslintConfig: {
+              globals: {
+                React: true,
+                ReactDOM: true,
+                axios: true
+              },
+              rules: {
+                'react/jsx-no-undef': 0,
+                'no-unused-vars': 0 // eslint not compatible with react/inject
+              }
+            }
+          });
+        }
       }
 
       if (this.props.modules === 'webpack') {
