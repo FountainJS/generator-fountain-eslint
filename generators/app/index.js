@@ -25,12 +25,12 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {
           devDependencies: {
             'babel-preset-react': '^6.1.18',
-            'eslint-config-xo-react': '^0.3.0',
-            'eslint-plugin-react': '^3.10.0'
+            'eslint-config-xo-react': '^0.6.0',
+            'eslint-plugin-react': '^4.3.0'
           },
           eslintConfig: {
             extends: [
-              'xo-react'
+              'xo-react/space'
             ]
           }
         });
