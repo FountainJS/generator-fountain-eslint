@@ -16,7 +16,7 @@ module.exports = fountain.Base.extend({
           root: true,
           env: {
             browser: true,
-            mocha: true
+            jasmine: true
           }
         }
       });
