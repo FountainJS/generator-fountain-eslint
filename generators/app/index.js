@@ -138,7 +138,7 @@ module.exports = fountain.Base.extend({
       }
 
       if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
-        this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.2.0'}});
+        this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.2.0', 'babel-polyfill': '^6.7.4'}});
       }
 
       if (this.props.js === 'babel') {
