@@ -10,7 +10,7 @@ module.exports = fountain.Base.extend({
       this.mergeJson('package.json', {
         devDependencies: {
           'eslint': '^2.4.0',
-          'eslint-config-xo-space': '^0.10.0'
+          'eslint-config-xo-space': '^0.12.0'
         },
         eslintConfig: {
           root: true,
@@ -25,8 +25,8 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {
           devDependencies: {
             'babel-preset-react': '^6.1.18',
-            'eslint-config-xo-react': '^0.6.0',
-            'eslint-plugin-react': '^4.3.0'
+            'eslint-config-xo-react': '^0.7.0',
+            'eslint-plugin-react': '^5.0.1'
           },
           eslintConfig: {
             extends: [
@@ -73,7 +73,7 @@ module.exports = fountain.Base.extend({
       } else {
         this.mergeJson('package.json', {
           devDependencies: {
-            'babel-eslint': '^6.0.0-beta.6',
+            'babel-eslint': '^6.0.2',
             'eslint-plugin-babel': '^3.1.0'
           },
           eslintConfig: {
