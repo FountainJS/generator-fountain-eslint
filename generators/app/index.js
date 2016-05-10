@@ -1,10 +1,6 @@
 const fountain = require('fountain-generator');
 
 module.exports = fountain.Base.extend({
-  prompting() {
-    this.fountainPrompting();
-  },
-
   configuring: {
     pkg() {
       this.mergeJson('package.json', {
@@ -21,7 +17,7 @@ module.exports = fountain.Base.extend({
         }
       });
 
-      if (this.props.framework === 'react') {
+      if (this.options.framework === 'react') {
         this.mergeJson('package.json', {
           devDependencies: {
             'babel-preset-react': '^6.1.18',
@@ -34,7 +30,7 @@ module.exports = fountain.Base.extend({
             ]
           }
         });
-        if (this.props.modules === 'inject') {
+        if (this.options.modules === 'inject') {
           this.mergeJson('package.json', {
             eslintConfig: {
               globals: {
@@ -51,7 +47,7 @@ module.exports = fountain.Base.extend({
         }
       }
 
-      if (this.props.modules === 'webpack') {
+      if (this.options.modules === 'webpack') {
         this.mergeJson('package.json', {
           devDependencies: {
             'eslint-loader': '^1.3.0',
@@ -62,7 +58,7 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {devDependencies: {'gulp-eslint': '^2.0.0'}});
       }
 
-      if (this.props.js === 'js') {
+      if (this.options.js === 'js') {
         this.mergeJson('package.json', {
           eslintConfig: {
             extends: [
@@ -84,7 +80,7 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.framework === 'angular2' && this.props.js !== 'typescript') {
+      if (this.options.framework === 'angular2' && this.options.js !== 'typescript') {
         this.mergeJson('package.json', {
           eslintConfig: {
             rules: {
@@ -94,8 +90,8 @@ module.exports = fountain.Base.extend({
         });
       }
 
-      if (this.props.modules === 'inject') {
-        if (this.props.framework === 'angular1') {
+      if (this.options.modules === 'inject') {
+        if (this.options.framework === 'angular1') {
           this.mergeJson('package.json', {
             eslintConfig: {
               globals: {
@@ -104,15 +100,15 @@ module.exports = fountain.Base.extend({
             }
           });
         }
-        if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+        if (this.options.js === 'babel' || this.options.js === 'js' && this.options.framework === 'react') {
           this.mergeJson('package.json', {devDependencies: {'gulp-babel': '^6.1.0'}});
         }
       }
 
-      if (this.props.modules === 'systemjs') {
+      if (this.options.modules === 'systemjs') {
         this.mergeJson('package.json', {eslintConfig: {globals: {SystemJS: true}}});
 
-        if (this.props.framework === 'angular2') {
+        if (this.options.framework === 'angular2') {
           this.mergeJson('package.json', {
             jspm: {
               devDependencies: {
@@ -123,11 +119,11 @@ module.exports = fountain.Base.extend({
               }
             }
           });
-        } else if (this.props.framework === 'react') {
+        } else if (this.options.framework === 'react') {
           this.mergeJson('package.json', {jspm: {devDependencies: {'babel-preset-react': 'npm:babel-preset-react@^6.5.0'}}});
         }
 
-        if (this.props.js !== 'typescript') {
+        if (this.options.js !== 'typescript') {
           this.mergeJson('package.json', {
             jspm: {
               dependencies: {babel: 'npm:babel-core@^6.6.5'},
@@ -137,11 +133,11 @@ module.exports = fountain.Base.extend({
         }
       }
 
-      if (this.props.js === 'babel' || this.props.js === 'js' && this.props.framework === 'react') {
+      if (this.options.js === 'babel' || this.options.js === 'js' && this.options.framework === 'react') {
         this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.2.0', 'babel-polyfill': '^6.7.4'}});
       }
 
-      if (this.props.js === 'babel') {
+      if (this.options.js === 'babel') {
         this.mergeJson('package.json', {devDependencies: {'babel-preset-es2015': '^6.2.0'}});
       }
     }
@@ -149,7 +145,7 @@ module.exports = fountain.Base.extend({
 
   writing: {
     wireing() {
-      if (this.props.modules === 'webpack' && this.props.js !== 'typescript') {
+      if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
           'conf/webpack-test.conf.js',
@@ -160,12 +156,12 @@ module.exports = fountain.Base.extend({
           'conf/webpack-dist.conf.js',
           / {2}module: \{/
         );
-      } else if (this.props.modules === 'systemjs') {
+      } else if (this.options.modules === 'systemjs') {
         this.copyTemplate(
           'gulp_tasks/scripts-full.js',
           'gulp_tasks/scripts.js'
         );
-      } else if (this.props.modules === 'inject' && this.props.js !== 'typescript') {
+      } else if (this.options.modules === 'inject' && this.options.js !== 'typescript') {
         this.replaceInFileWithTemplate(
           'gulp_tasks/scripts-require.js',
           'gulp_tasks/scripts.js',
