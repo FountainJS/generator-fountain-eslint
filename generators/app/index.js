@@ -144,7 +144,7 @@ module.exports = fountain.Base.extend({
   },
 
   writing: {
-    wireing() {
+    wiring() {
       if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
