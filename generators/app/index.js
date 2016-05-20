@@ -40,6 +40,7 @@ module.exports = fountain.Base.extend({
               },
               rules: {
                 'react/jsx-no-undef': 0,
+                'no-undef': 0, // eslint not compatible with react/inject
                 'no-unused-vars': 0 // eslint not compatible with react/inject
               }
             }
