@@ -112,6 +112,7 @@ module.exports = fountain.Base.extend({
           this.mergeJson('package.json', {
             jspm: {
               devDependencies: {
+                'babel-plugin-transform-es2015-typeof-symbol': 'npm:babel-plugin-transform-es2015-typeof-symbol@^6.8.0',
                 'babel-plugin-angular2-annotations': 'npm:babel-plugin-angular2-annotations@^5.0.0',
                 'babel-plugin-transform-decorators-legacy': 'npm:babel-plugin-transform-decorators-legacy@^1.3.4',
                 'babel-plugin-transform-class-properties': 'npm:babel-plugin-transform-class-properties@^6.6.0',
