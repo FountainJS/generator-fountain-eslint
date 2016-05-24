@@ -14,4 +14,4 @@ This generator is not directly usable with `yo`. It's used by composition with t
 
 ## Contributing
 
-To contribute to this generator, please look at the Fountain [contributing](https://github.com/FountainJS/fountain/blob/master/CONTRIBUTING.md) documentation.
+To contribute to this generator, please look at the Fountain [contributing](http://fountainjs.io/doc/contributing) documentation.
