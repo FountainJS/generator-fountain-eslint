@@ -129,7 +129,7 @@ module.exports = fountain.Base.extend({
           this.mergeJson('package.json', {
             jspm: {
               dependencies: {babel: 'npm:babel-core@^6.6.5'},
-              devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.8'}
+              devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
             }
           });
         }
