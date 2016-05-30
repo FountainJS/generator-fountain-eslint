@@ -5,7 +5,7 @@ module.exports = fountain.Base.extend({
     pkg() {
       this.mergeJson('package.json', {
         devDependencies: {
-          'eslint': '^2.4.0',
+          'eslint': '2.10.2', // https://github.com/eslint/eslint/issues/6264
           'eslint-config-xo-space': '^0.12.0'
         },
         eslintConfig: {
