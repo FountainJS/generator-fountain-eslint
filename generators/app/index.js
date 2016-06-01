@@ -5,7 +5,7 @@ module.exports = fountain.Base.extend({
     pkg() {
       this.mergeJson('package.json', {
         devDependencies: {
-          'eslint': '2.10.2', // https://github.com/eslint/eslint/issues/6264
+          'eslint': '^2.11.0',
           'eslint-config-xo-space': '^0.12.0'
         },
         eslintConfig: {
@@ -100,6 +100,16 @@ module.exports = fountain.Base.extend({
               }
             }
           });
+          if (this.options.sample === 'todoMVC') {
+            this.mergeJson('package.json', {
+              eslintConfig: {
+                rules: {
+                  'no-undef': 0, // eslint not compatible with angular/inject
+                  'no-unused-vars': 0 // eslint not compatible with angular/inject
+                }
+              }
+            });
+          }
         }
         if (this.options.js === 'babel' || this.options.js === 'js' && this.options.framework === 'react') {
           this.mergeJson('package.json', {devDependencies: {'gulp-babel': '^6.1.0'}});
