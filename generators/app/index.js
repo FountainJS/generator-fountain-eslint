@@ -100,6 +100,16 @@ module.exports = fountain.Base.extend({
               }
             }
           });
+          if (this.options.sample === 'todoMVC') {
+            this.mergeJson('package.json', {
+              eslintConfig: {
+                rules: {
+                  'no-undef': 0, // eslint not compatible with angular/inject
+                  'no-unused-vars': 0 // eslint not compatible with angular/inject
+                }
+              }
+            });
+          }
         }
         if (this.options.js === 'babel' || this.options.js === 'js' && this.options.framework === 'react') {
           this.mergeJson('package.json', {devDependencies: {'gulp-babel': '^6.1.0'}});
