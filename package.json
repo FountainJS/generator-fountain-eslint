@@ -1,6 +1,6 @@
 {
   "name": "generator-fountain-eslint",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Yeoman 'fountain' generator which handle the ESLint config",
   "homepage": "",
   "repository": "fountainjs/generator-fountain-eslint",
@@ -21,7 +21,7 @@
     "eslint"
   ],
   "dependencies": {
-    "fountain-generator": "^0.5.3"
+    "fountain-generator": "^0.5.4"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.2",
