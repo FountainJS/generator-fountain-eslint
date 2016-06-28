@@ -4,6 +4,9 @@
   </a>
 </p>
 
+[![Build Status](https://travis-ci.org/FountainJS/generator-fountain-eslint.svg?branch=master)](https://travis-ci.org/FountainJS/generator-fountain-eslint)
+[![codecov](https://codecov.io/gh/FountainJS/generator-fountain-eslint/branch/master/graph/badge.svg)](https://codecov.io/gh/FountainJS/generator-fountain-eslint)
+
 # Fountain ESLint Generator
 
 Yeoman 'fountain' generator which handle the ESLint config.
