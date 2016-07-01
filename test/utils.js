@@ -66,6 +66,11 @@ module.exports.systemjsAngular2 = {
       'babel-plugin-transform-class-properties': 'npm:babel-plugin-transform-class-properties@^6.6.0',
       'babel-plugin-transform-flow-strip-types': 'npm:babel-plugin-transform-flow-strip-types@^6.6.4'
     }
+  },
+  eslintConfig: {
+    globals: {
+      __moduleName: true
+    }
   }
 };
 

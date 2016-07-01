@@ -85,7 +85,17 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {
           eslintConfig: {
             rules: {
-              'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'Injectable', 'RouteConfig', 'Class', 'ViewChild', 'Directive', 'Pipe']}]
+              'new-cap': [2, {capIsNewExceptions: [
+                'Input',
+                'Output',
+                'Component',
+                'Injectable',
+                'RouteConfig',
+                'Class',
+                'ViewChild',
+                'Directive',
+                'Pipe'
+              ]}]
             }
           }
         });
@@ -128,6 +138,11 @@ module.exports = fountain.Base.extend({
                 'babel-plugin-transform-decorators-legacy': 'npm:babel-plugin-transform-decorators-legacy@^1.3.4',
                 'babel-plugin-transform-class-properties': 'npm:babel-plugin-transform-class-properties@^6.6.0',
                 'babel-plugin-transform-flow-strip-types': 'npm:babel-plugin-transform-flow-strip-types@^6.6.4'
+              }
+            },
+            eslintConfig: {
+              globals: {
+                __moduleName: true
               }
             }
           });
