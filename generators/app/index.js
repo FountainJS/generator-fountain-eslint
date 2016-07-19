@@ -17,6 +17,20 @@ module.exports = fountain.Base.extend({
         }
       });
 
+      if (this.options.framework === 'angular1') {
+        this.mergeJson('package.json', {
+          devDependencies: {
+            'eslint-config-angular': '^0.5.0',
+            'eslint-plugin-angular': '^1.3.0'
+          },
+          eslintConfig: {
+            extends: [
+              'angular'
+            ]
+          }
+        });
+      }
+
       if (this.options.framework === 'react') {
         this.mergeJson('package.json', {
           devDependencies: {

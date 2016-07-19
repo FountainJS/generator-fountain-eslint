@@ -33,6 +33,18 @@ module.exports.jsBase = {
   }
 };
 
+module.exports.angular1Base = {
+  devDependencies: {
+    'eslint-config-angular': '^0.5.0',
+    'eslint-plugin-angular': '^1.3.0'
+  },
+  eslintConfig: {
+    extends: [
+      'angular'
+    ]
+  }
+};
+
 module.exports.injectAngular1 = {
   eslintConfig: {
     globals: {
