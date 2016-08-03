@@ -1,6 +1,6 @@
 module.exports.base = {
   devDependencies: {
-    'eslint': '^2.11.0',
+    'eslint': '^3.2.2',
     'eslint-config-xo-space': '^0.12.0'
   },
   eslintConfig: {
