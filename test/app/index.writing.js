@@ -14,21 +14,25 @@ test.before(() => {
 });
 
 test('Wiring with angular1/webpack/babel', () => {
-  const spy = chai.spy.on(context, 'replaceInFileWithTemplate');
+  const spy1 = chai.spy.on(context, 'replaceInFileWithTemplate');
+  const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular1', modules: 'webpack', js: 'babel'});
-  expect(spy).to.have.been.called.twice();
+  expect(spy1).to.have.been.called.twice();
+  expect(spy2).to.have.been.called.once();
 });
 
 test('Wiring with angular2/systemjs', () => {
   const spy = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular2', modules: 'systemjs'});
-  expect(spy).to.have.been.called.once();
+  expect(spy).to.have.been.called.twice(2);
 });
 
 test('Wiring with angular1/inject/js', () => {
-  const spy = chai.spy.on(context, 'replaceInFileWithTemplate');
+  const spy1 = chai.spy.on(context, 'replaceInFileWithTemplate');
+  const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular1', modules: 'inject', js: 'js'});
-  expect(spy).to.have.been.called.twice();
+  expect(spy1).to.have.been.called.twice();
+  expect(spy2).to.have.been.called.once();
 });
 
 test('Wiring with react/webpack/typescript', () => {
@@ -36,5 +40,5 @@ test('Wiring with react/webpack/typescript', () => {
   const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'react', modules: 'webpack', js: 'typescript'});
   expect(spy1).to.have.been.called.exactly(0);
-  expect(spy2).to.have.been.called.exactly(0);
+  expect(spy2).to.have.been.called.once();
 });

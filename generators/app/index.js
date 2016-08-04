@@ -215,6 +215,10 @@ module.exports = fountain.Base.extend({
           / {2}return gulp\.src[^\n]*/
         );
       }
+      this.copyTemplate(
+        '.editorconfig',
+        '.editorconfig'
+      );
     }
   }
 });
