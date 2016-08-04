@@ -5,7 +5,7 @@ module.exports = fountain.Base.extend({
     pkg() {
       this.mergeJson('package.json', {
         devDependencies: {
-          'eslint': '^2.11.0',
+          'eslint': '^3.2.2',
           'eslint-config-xo-space': '^0.12.0'
         },
         eslintConfig: {
@@ -22,11 +22,6 @@ module.exports = fountain.Base.extend({
           devDependencies: {
             'eslint-config-angular': '^0.5.0',
             'eslint-plugin-angular': '^1.3.0'
-          },
-          eslintConfig: {
-            extends: [
-              'angular'
-            ]
           }
         });
       }
@@ -186,6 +181,12 @@ module.exports = fountain.Base.extend({
 
   writing: {
     wiring() {
+      if (this.options.framework === 'angular1') {
+        this.copyTemplate(
+          'src/.eslintrc.js',
+          'src/.eslintrc.js'
+        );
+      }
       if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',

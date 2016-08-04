@@ -1,6 +1,6 @@
 module.exports.base = {
   devDependencies: {
-    'eslint': '^2.11.0',
+    'eslint': '^3.2.2',
     'eslint-config-xo-space': '^0.12.0'
   },
   eslintConfig: {
@@ -37,11 +37,6 @@ module.exports.angular1Base = {
   devDependencies: {
     'eslint-config-angular': '^0.5.0',
     'eslint-plugin-angular': '^1.3.0'
-  },
-  eslintConfig: {
-    extends: [
-      'angular'
-    ]
   }
 };
 
