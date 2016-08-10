@@ -135,6 +135,20 @@ module.exports = fountain.Base.extend({
         }
       }
 
+      if (this.options.framework === 'vue') {
+        this.mergeJson('package.json', {
+          devDependencies: {
+            'babel-plugin-transform-object-rest-spread': '^6.8.0',
+            'eslint-plugin-html': '^1.5.2',
+            'babel-plugin-transform-runtime': '^6.12.0',
+            'babel-runtime': '^6.11.6'
+          },
+          eslintConfig: {
+            plugins: ['html']
+          }
+        });
+      }
+
       if (this.options.modules === 'systemjs') {
         this.mergeJson('package.json', {eslintConfig: {globals: {SystemJS: true}}});
 
