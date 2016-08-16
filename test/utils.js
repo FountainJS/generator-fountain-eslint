@@ -63,7 +63,7 @@ module.exports.injectAngular1 = {
 module.exports.babelBase = {
   devDependencies: {
     'babel-preset-es2015': '^6.2.0',
-    'babel-core': '^6.2.0',
+    'babel-core': '^6.13.0',
     'babel-polyfill': '^6.7.4'
   }
 };
