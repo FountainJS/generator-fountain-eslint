@@ -18,7 +18,7 @@ test('Wiring with angular1/webpack/babel', () => {
   const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular1', modules: 'webpack', js: 'babel'});
   expect(spy1).to.have.been.called.twice();
-  expect(spy2).to.have.been.called.once();
+  expect(spy2).to.have.been.called.twice();
 });
 
 test('Wiring with angular2/systemjs', () => {
@@ -32,7 +32,7 @@ test('Wiring with angular1/inject/js', () => {
   const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular1', modules: 'inject', js: 'js'});
   expect(spy1).to.have.been.called.twice();
-  expect(spy2).to.have.been.called.once();
+  expect(spy2).to.have.been.called.twice();
 });
 
 test('Wiring with react/webpack/typescript', () => {
