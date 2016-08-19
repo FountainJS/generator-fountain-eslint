@@ -9,7 +9,7 @@
 
 # Fountain ESLint Generator
 
-Yeoman 'fountain' generator which handle the ESLint config.
+Yeoman Fountain generator which handle the ESLint config.
 
 ## Usage
 
