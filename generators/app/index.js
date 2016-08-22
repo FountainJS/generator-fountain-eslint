@@ -22,11 +22,6 @@ module.exports = fountain.Base.extend({
           devDependencies: {
             'eslint-config-angular': '^0.5.0',
             'eslint-plugin-angular': '^1.3.0'
-          },
-          eslintConfig: {
-            rules: {
-              'angular/no-service-method': 0
-            }
           }
         });
       }
