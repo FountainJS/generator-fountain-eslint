@@ -135,6 +135,20 @@ module.exports = fountain.Base.extend({
         }
       }
 
+      if (this.options.framework === 'vue') {
+        this.mergeJson('package.json', {
+          devDependencies: {
+            'babel-plugin-transform-object-rest-spread': '^6.8.0',
+            'eslint-plugin-html': '^1.5.2',
+            'babel-plugin-transform-runtime': '^6.12.0',
+            'babel-runtime': '^6.11.6'
+          },
+          eslintConfig: {
+            plugins: ['html']
+          }
+        });
+      }
+
       if (this.options.modules === 'systemjs') {
         this.mergeJson('package.json', {eslintConfig: {globals: {SystemJS: true}}});
 
@@ -162,7 +176,7 @@ module.exports = fountain.Base.extend({
         if (this.options.js !== 'typescript') {
           this.mergeJson('package.json', {
             jspm: {
-              dependencies: {babel: 'npm:babel-core@^6.6.5'},
+              dependencies: {babel: 'npm:babel-core@^6.13.0'},
               devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
             }
           });
@@ -170,7 +184,7 @@ module.exports = fountain.Base.extend({
       }
 
       if (this.options.js === 'babel' || this.options.js === 'js' && this.options.framework === 'react') {
-        this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.2.0', 'babel-polyfill': '^6.7.4'}});
+        this.mergeJson('package.json', {devDependencies: {'babel-core': '^6.13.0', 'babel-polyfill': '^6.7.4'}});
       }
 
       if (this.options.js === 'babel') {

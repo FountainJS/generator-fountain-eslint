@@ -28,7 +28,7 @@ test('Configuring package.json: react/webpack/babel', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'react', modules: 'webpack', js: 'babel'});
   const expected = merge([u.base, u.reactBase, u.webpackBase, u.babelBase, u.babelTypescriptBase, {
     devDependencies: {
-      'babel-core': '^6.2.0',
+      'babel-core': '^6.13.0',
       'babel-polyfill': '^6.7.4'
     }
   }]);
@@ -39,7 +39,7 @@ test('Configuring package.json: react/webpack/js', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'react', modules: 'webpack', js: 'js'});
   const expected = merge([u.base, u.reactBase, u.webpackBase, u.jsBase, {
     devDependencies: {
-      'babel-core': '^6.2.0',
+      'babel-core': '^6.13.0',
       'babel-polyfill': '^6.7.4'
     }
   }]);
@@ -56,7 +56,7 @@ test('react/systemjs/babel', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'react', modules: 'systemjs', js: 'babel'});
   const expected = merge([u.base, u.reactBase, u.systemjsBase, u.systemjsReactBase, u.babelBase, u.babelTypescriptBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.6.5'},
+      dependencies: {babel: 'npm:babel-core@^6.13.0'},
       devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
     }
   }]);
@@ -73,11 +73,11 @@ test('Configuring package.json: react/systemjs/js', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'react', modules: 'systemjs', js: 'js'});
   const expected = merge([u.base, u.reactBase, u.jsBase, u.systemjsBase, u.systemjsReactBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.6.5'},
+      dependencies: {babel: 'npm:babel-core@^6.13.0'},
       devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
     },
     devDependencies: {
-      'babel-core': '^6.2.0',
+      'babel-core': '^6.13.0',
       'babel-polyfill': '^6.7.4'
     }
   }]);
@@ -97,7 +97,7 @@ test('Configuring package.json: react/inject/js', t => {
   const expected = merge([u.base, u.reactBase, u.injectBase, u.injectReactBase, u.jsBase, {
     devDependencies: {
       'gulp-babel': '^6.1.0',
-      'babel-core': '^6.2.0',
+      'babel-core': '^6.13.0',
       'babel-polyfill': '^6.7.4'
     }
   }]);

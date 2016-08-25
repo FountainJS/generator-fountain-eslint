@@ -12,6 +12,18 @@ module.exports.base = {
   }
 };
 
+module.exports.vueBase = {
+  devDependencies: {
+    'babel-plugin-transform-object-rest-spread': '^6.8.0',
+    'eslint-plugin-html': '^1.5.2',
+    'babel-plugin-transform-runtime': '^6.12.0',
+    'babel-runtime': '^6.11.6'
+  },
+  eslintConfig: {
+    plugins: ['html']
+  }
+};
+
 module.exports.reactBase = {
   devDependencies: {
     'babel-preset-react': '^6.1.18',
@@ -51,7 +63,7 @@ module.exports.injectAngular1 = {
 module.exports.babelBase = {
   devDependencies: {
     'babel-preset-es2015': '^6.2.0',
-    'babel-core': '^6.2.0',
+    'babel-core': '^6.13.0',
     'babel-polyfill': '^6.7.4'
   }
 };
