@@ -17,7 +17,7 @@ test('Wiring with angular1/webpack/babel', () => {
   const spy1 = chai.spy.on(context, 'replaceInFileWithTemplate');
   const spy2 = chai.spy.on(context, 'copyTemplate');
   TestUtils.call(context, 'writing.wiring', {framework: 'angular1', modules: 'webpack', js: 'babel'});
-  expect(spy1).to.have.been.called.twice();
+  expect(spy1).to.have.been.called.exactly(3);
   expect(spy2).to.have.been.called.twice();
 });
 

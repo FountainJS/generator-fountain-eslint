@@ -71,7 +71,7 @@ module.exports.babelBase = {
 module.exports.angular2NotTypescriptBase = {
   eslintConfig: {
     rules: {
-      'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'Injectable', 'RouteConfig', 'Class', 'ViewChild', 'Directive', 'Pipe']}]
+      'new-cap': [2, {capIsNewExceptions: ['Input', 'Output', 'Component', 'Injectable', 'RouteConfig', 'Class', 'ViewChild', 'Directive', 'Pipe', 'NgModule']}]
     }
   }
 };

@@ -103,7 +103,8 @@ module.exports = fountain.Base.extend({
                 'Class',
                 'ViewChild',
                 'Directive',
-                'Pipe'
+                'Pipe',
+                'NgModule'
               ]}]
             }
           }
@@ -202,6 +203,11 @@ module.exports = fountain.Base.extend({
         );
       }
       if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
+        this.replaceInFileWithTemplate(
+          'conf/webpack.conf.js',
+          'conf/webpack.conf.js',
+          / {2}module: \{/
+        );
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
           'conf/webpack-test.conf.js',
