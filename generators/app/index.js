@@ -94,17 +94,7 @@ module.exports = fountain.Base.extend({
         this.mergeJson('package.json', {
           eslintConfig: {
             rules: {
-              'new-cap': [2, {capIsNewExceptions: [
-                'Input',
-                'Output',
-                'Component',
-                'Injectable',
-                'RouteConfig',
-                'Class',
-                'ViewChild',
-                'Directive',
-                'Pipe'
-              ]}]
+              'new-cap': 0
             }
           }
         });
@@ -202,6 +192,11 @@ module.exports = fountain.Base.extend({
         );
       }
       if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
+        this.replaceInFileWithTemplate(
+          'conf/webpack.conf.js',
+          'conf/webpack.conf.js',
+          / {2}module: \{/
+        );
         this.replaceInFileWithTemplate(
           'conf/webpack.conf.js',
           'conf/webpack-test.conf.js',
