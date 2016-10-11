@@ -191,23 +191,7 @@ module.exports = fountain.Base.extend({
           'src/.eslintrc.js'
         );
       }
-      if (this.options.modules === 'webpack' && this.options.js !== 'typescript') {
-        this.replaceInFileWithTemplate(
-          'conf/webpack.conf.js',
-          'conf/webpack.conf.js',
-          / {2}module: \{/
-        );
-        this.replaceInFileWithTemplate(
-          'conf/webpack.conf.js',
-          'conf/webpack-test.conf.js',
-          / {2}module: \{/
-        );
-        this.replaceInFileWithTemplate(
-          'conf/webpack.conf.js',
-          'conf/webpack-dist.conf.js',
-          / {2}module: \{/
-        );
-      } else if (this.options.modules === 'systemjs') {
+      if (this.options.modules === 'systemjs') {
         this.copyTemplate(
           'gulp_tasks/scripts-full.js',
           'gulp_tasks/scripts.js'
