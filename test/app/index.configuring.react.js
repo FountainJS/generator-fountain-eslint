@@ -57,7 +57,7 @@ test('react/systemjs/babel', t => {
   const expected = merge([u.base, u.reactBase, u.systemjsBase, u.systemjsReactBase, u.babelBase, u.babelTypescriptBase, {
     jspm: {
       dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
     }
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
@@ -74,7 +74,7 @@ test('Configuring package.json: react/systemjs/js', t => {
   const expected = merge([u.base, u.reactBase, u.jsBase, u.systemjsBase, u.systemjsReactBase, {
     jspm: {
       dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.10'}
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
     },
     devDependencies: {
       'babel-core': '^6.13.0',
