@@ -1,3 +1,4 @@
+const path = require('path');
 const spies = require('chai-spies');
 const chai = require('chai');
 const expect = chai.expect;
@@ -10,7 +11,7 @@ let context;
 test.before(() => {
   context = TestUtils.mock('app');
   require('../../generators/app/index');
-  process.chdir('../../');
+  process.chdir(path.resolve(__dirname, '../../'));
 });
 
 test('Wiring with angular1/webpack/babel', () => {
