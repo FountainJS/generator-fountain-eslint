@@ -46,8 +46,8 @@ test('Configuring package.json: angular2/systemjs/babel', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'angular2', modules: 'systemjs', js: 'babel'});
   const expected = merge([u.base, u.systemjsBase, u.systemjsAngular2, u.babelBase, u.babelTypescriptBase, u.angular2NotTypescriptBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
+      dependencies: {babel: 'npm:babel-core@^6.23.1'},
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.21'}
     }
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
@@ -57,8 +57,8 @@ test('Configuring package.json: angular2/systemjs/js', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'angular2', modules: 'systemjs', js: 'js'});
   const expected = merge([u.base, u.systemjsBase, u.jsBase, u.systemjsAngular2, u.angular2NotTypescriptBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
+      dependencies: {babel: 'npm:babel-core@^6.23.1'},
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.21'}
     }
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
