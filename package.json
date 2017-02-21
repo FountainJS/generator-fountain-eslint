@@ -1,6 +1,6 @@
 {
   "name": "generator-fountain-eslint",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0",
   "description": "Yeoman Fountain generator which handle the ESLint config",
   "homepage": "http://fountainjs.io/",
   "repository": "fountainjs/generator-fountain-eslint",
@@ -21,7 +21,7 @@
     "eslint"
   ],
   "dependencies": {
-    "fountain-generator": "^1.0.0-rc2"
+    "fountain-generator": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.18.2",
