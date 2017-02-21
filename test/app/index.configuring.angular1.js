@@ -46,8 +46,8 @@ test('Configuring package.json: angular1/systemjs/babel', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'angular1', modules: 'systemjs', js: 'babel'});
   const expected = merge([u.angular1Base, u.base, u.systemjsBase, u.babelBase, u.babelTypescriptBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
+      dependencies: {babel: 'npm:babel-core@^6.23.1'},
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.21'}
     }
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
@@ -57,8 +57,8 @@ test('Configuring package.json: angular1/systemjs/js', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'angular1', modules: 'systemjs', js: 'js'});
   const expected = merge([u.angular1Base, u.base, u.systemjsBase, u.jsBase, {
     jspm: {
-      dependencies: {babel: 'npm:babel-core@^6.13.0'},
-      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.17'}
+      dependencies: {babel: 'npm:babel-core@^6.23.1'},
+      devDependencies: {'plugin-babel': 'npm:systemjs-plugin-babel@^0.0.21'}
     }
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
@@ -73,7 +73,7 @@ test('Configuring package.json: angular1/systemjs/ts', t => {
 test('Configuring package.json: angular1/inject/babel', t => {
   TestUtils.call(context, 'configuring.pkg', {framework: 'angular1', modules: 'inject', js: 'babel'});
   const expected = merge([u.angular1Base, u.base, u.injectBase, u.injectAngular1, u.babelBase, u.babelTypescriptBase, {
-    devDependencies: {'gulp-babel': '^6.1.0'}
+    devDependencies: {'gulp-babel': '^6.1.2'}
   }]);
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
