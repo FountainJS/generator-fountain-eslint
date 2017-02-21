@@ -99,6 +99,7 @@ module.exports.babelTypescriptBase = {
     'eslint-plugin-babel': '^4.0.1'
   },
   eslintConfig: {
+    parser: 'babel-eslint',
     extends: [
       'xo-space/esnext'
     ]
