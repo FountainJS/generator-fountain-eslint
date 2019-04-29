@@ -29,9 +29,11 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
     "cross-spawn": "^5.0.1",
-    "eslint": "^3.15.0",
+    "eslint": "^3.19.0",
+    "eslint-config-xo-react": "^0.13.0",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-react": "^7.4.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.1",
     "gulp-exclude-gitignore": "^1.1.1",
@@ -58,9 +60,12 @@
   },
   "license": "MIT",
   "eslintConfig": {
-    "extends": "xo-space/esnext",
+    "extends": ["xo", "xo-react", "xo-space/esnext"],
     "rules": {
-      "quote-props": ["error", "consistent"]
+      "quote-props": [
+        "error",
+        "consistent"
+      ]
     }
   }
 }
